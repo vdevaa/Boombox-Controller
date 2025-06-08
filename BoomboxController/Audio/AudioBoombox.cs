@@ -19,9 +19,9 @@ namespace BoomboxController.Audio
     {
         private static AudioBoomBox _instance;
 
-        public List<AudioClip> audioclips = new List<AudioClip>();
+        public Dictionary<string, AudioClip> audioclips = new Dictionary<string, AudioClip>();
 
-        public List<AudioClip> audioclipsplay = new List<AudioClip>();
+        public Dictionary<string, AudioClip> audioclipsplay = new Dictionary<string, AudioClip>();
 
         public Coroutine Start(IEnumerator routine)
         {
@@ -49,8 +49,8 @@ namespace BoomboxController.Audio
                 else
                 {
                     AudioClip myClip = DownloadHandlerAudioClip.GetContent(www);
-                    audioclips.Add(myClip);
-                    BoomboxController.musicList = audioclips.ToArray();
+                    audioclips.Add(new FileInfo(url.Replace("file:///", "")).Name, myClip);
+                    BoomboxController.musicList = audioclips;
                     BoomboxController.LoadingMusicBoombox = false;
                     BoomboxController.isplayList = false;
                 }
@@ -73,7 +73,7 @@ namespace BoomboxController.Audio
                 else
                 {
                     AudioClip myClip = DownloadHandlerAudioClip.GetContent(www);
-                    audioclipsplay.Add(myClip);
+                    audioclipsplay.Add(new FileInfo(url.Replace("file:///", "")).Name, myClip);
                     //Plugin.instance.Log(url);
                 }
             }

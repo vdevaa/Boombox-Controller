@@ -115,7 +115,7 @@ namespace BoomboxController.Vision
                                             string total_seconds = Mathf.Floor((int)total_ost % 60).ToString("00");
                                             if (Plugin.config.languages.Value == "en")
                                             {
-                                                if (musicList == null || musicList.Length > 0)
+                                                if (musicList == null || musicList.Count > 0)
                                                 {
                                                     string playname = boomboxItem.isPlayingMusic ? "[Home]" : "Nothing";
                                                     __instance.cursorTip.text = Plugin.config.GetLang().main_2.Value.Replace("@1", $"{Math.Round(volume * 100)}%").Replace("@2", $"{currect_hours}:{currect_minutes}:{currect_seconds}").Replace("@3", $"{total_hours}:{total_minutes}:{total_seconds}").Replace("@4", $"{playname}").Replace("@5", $"{totalTack}") + $"\nIncrease volume [{(up == null ? "PU" : up.displayName)}]\nDecrease volume [{(down == null ? "PD" : down.displayName)}]";
@@ -123,7 +123,7 @@ namespace BoomboxController.Vision
                                             }
                                             if (Plugin.config.languages.Value == "ru")
                                             {
-                                                if (musicList == null || musicList.Length > 0)
+                                                if (musicList == null || musicList.Count > 0)
                                                 {
                                                     string playname = boomboxItem.isPlayingMusic ? "[Home]" : "Нечего";
                                                     __instance.cursorTip.text = Plugin.config.GetLang().main_2.Value.Replace("@1", $"{Math.Round(volume * 100)}%").Replace("@2", $"{currect_hours}:{currect_minutes}:{currect_seconds}").Replace("@3", $"{total_hours}:{total_minutes}:{total_seconds}").Replace("@4", $"{playname}").Replace("@5", $"{totalTack}") + $"\nУвеличить громкость [{(up == null ? "PU" : up.displayName)}]\nУменьшить громкость [{(down == null ? "PD" : down.displayName)}]";
@@ -184,8 +184,8 @@ namespace BoomboxController.Vision
                                             //}
                                             if (Keyboard.current.homeKey.IsPressed())
                                             {
-                                                if (musicList.Length == 1) __instance.cursorTip.text = Plugin.config.GetLang().main_2.Value.Replace("@1", $"{Math.Round(volume * 100)}%").Replace("@2", $"{currect_hours}:{currect_minutes}:{currect_seconds}").Replace("@3", $"{total_hours}:{total_minutes}:{total_seconds}").Replace("@4", $"{NameTrack.Substring(0, NameTrack.Length - 4)}").Replace("@5", $"{totalTack}");
-                                                if (musicList.Length > 1) __instance.cursorTip.text = Plugin.config.GetLang().main_2.Value.Replace("@1", $"{Math.Round(volume * 100)}%").Replace("@2", $"{currect_hours}:{currect_minutes}:{currect_seconds}").Replace("@3", $"{total_hours}:{total_minutes}:{total_seconds}").Replace("@4", $"{NameTrack.Replace(" ", "")}").Replace("@5", $"{totalTack}");
+                                                if (musicList.Count == 1) __instance.cursorTip.text = Plugin.config.GetLang().main_2.Value.Replace("@1", $"{Math.Round(volume * 100)}%").Replace("@2", $"{currect_hours}:{currect_minutes}:{currect_seconds}").Replace("@3", $"{total_hours}:{total_minutes}:{total_seconds}").Replace("@4", $"{NameTrack.Substring(0, NameTrack.Length - 4)}").Replace("@5", $"{totalTack}");
+                                                if (musicList.Count > 1) __instance.cursorTip.text = Plugin.config.GetLang().main_2.Value.Replace("@1", $"{Math.Round(volume * 100)}%").Replace("@2", $"{currect_hours}:{currect_minutes}:{currect_seconds}").Replace("@3", $"{total_hours}:{total_minutes}:{total_seconds}").Replace("@4", $"{NameTrack.Replace(" ", "")}").Replace("@5", $"{totalTack}");
                                             }
                                         }
                                     }

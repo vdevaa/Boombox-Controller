@@ -9,6 +9,7 @@ using BoomboxController.Commands;
 using BoomboxController.Options;
 using BoomboxController.Startups;
 using BoomboxController.Vision;
+using BoomboxController.Multiplayer;
 
 namespace BoomboxController
 {
@@ -28,6 +29,7 @@ namespace BoomboxController
             Plugin.HarmonyLib.PatchAll(typeof(SaveManager));
             Plugin.HarmonyLib.PatchAll(typeof(StartupManager));
             Plugin.HarmonyLib.PatchAll(typeof(VisionManager));
+            Plugin.HarmonyLib.PatchAll(typeof(MultiplayerManager));
         }
 
         public static void DrawString(HUDManager __instance, string chatMessage, string nameOfUserWhoTyped, string? name)

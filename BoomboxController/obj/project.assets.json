@@ -166,7 +166,7 @@
           }
         }
       },
-      "UnityEngine.Modules/2022.3.9": {
+      "UnityEngine.Modules/2021.3.33": {
         "type": "package",
         "compile": {
           "lib/net45/UnityEngine.AIModule.dll": {},
@@ -178,7 +178,6 @@
           "lib/net45/UnityEngine.ClothModule.dll": {},
           "lib/net45/UnityEngine.ClusterInputModule.dll": {},
           "lib/net45/UnityEngine.ClusterRendererModule.dll": {},
-          "lib/net45/UnityEngine.ContentLoadModule.dll": {},
           "lib/net45/UnityEngine.CoreModule.dll": {},
           "lib/net45/UnityEngine.CrashReportingModule.dll": {},
           "lib/net45/UnityEngine.DSPGraphModule.dll": {},
@@ -198,7 +197,6 @@
           "lib/net45/UnityEngine.Physics2DModule.dll": {},
           "lib/net45/UnityEngine.PhysicsModule.dll": {},
           "lib/net45/UnityEngine.ProfilerModule.dll": {},
-          "lib/net45/UnityEngine.PropertiesModule.dll": {},
           "lib/net45/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll": {},
           "lib/net45/UnityEngine.ScreenCaptureModule.dll": {},
           "lib/net45/UnityEngine.SharedInternalsModule.dll": {},
@@ -215,7 +213,9 @@
           "lib/net45/UnityEngine.TextRenderingModule.dll": {},
           "lib/net45/UnityEngine.TilemapModule.dll": {},
           "lib/net45/UnityEngine.UIElementsModule.dll": {},
+          "lib/net45/UnityEngine.UIElementsNativeModule.dll": {},
           "lib/net45/UnityEngine.UIModule.dll": {},
+          "lib/net45/UnityEngine.UNETModule.dll": {},
           "lib/net45/UnityEngine.UmbraModule.dll": {},
           "lib/net45/UnityEngine.UnityAnalyticsCommonModule.dll": {},
           "lib/net45/UnityEngine.UnityAnalyticsModule.dll": {},
@@ -806,12 +806,13 @@
         "system.io.compression.nuspec"
       ]
     },
-    "UnityEngine.Modules/2022.3.9": {
-      "sha512": "sSxqZjd05U0NWlX+eappdlsEuXFvDRHkUaClDVTocGRzCmIwNvgGJIPh22lGklIpNZ3cJZneYJkIUnEIazR8VA==",
+    "UnityEngine.Modules/2021.3.33": {
+      "sha512": "7NtoEnLcehfJIW+DL9awtXAHj3SJcQBWOTPePwA6LmeWVz9YbHoSzs2uEOCt5meWokUqCWMVmqBT1Heu5ouWDw==",
       "type": "package",
-      "path": "unityengine.modules/2022.3.9",
+      "path": "unityengine.modules/2021.3.33",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "lib/net35/UnityEngine.AIModule.dll",
         "lib/net35/UnityEngine.AccessibilityModule.dll",
         "lib/net35/UnityEngine.AndroidJNIModule.dll",
@@ -821,7 +822,6 @@
         "lib/net35/UnityEngine.ClothModule.dll",
         "lib/net35/UnityEngine.ClusterInputModule.dll",
         "lib/net35/UnityEngine.ClusterRendererModule.dll",
-        "lib/net35/UnityEngine.ContentLoadModule.dll",
         "lib/net35/UnityEngine.CoreModule.dll",
         "lib/net35/UnityEngine.CrashReportingModule.dll",
         "lib/net35/UnityEngine.DSPGraphModule.dll",
@@ -841,7 +841,6 @@
         "lib/net35/UnityEngine.Physics2DModule.dll",
         "lib/net35/UnityEngine.PhysicsModule.dll",
         "lib/net35/UnityEngine.ProfilerModule.dll",
-        "lib/net35/UnityEngine.PropertiesModule.dll",
         "lib/net35/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll",
         "lib/net35/UnityEngine.ScreenCaptureModule.dll",
         "lib/net35/UnityEngine.SharedInternalsModule.dll",
@@ -858,7 +857,9 @@
         "lib/net35/UnityEngine.TextRenderingModule.dll",
         "lib/net35/UnityEngine.TilemapModule.dll",
         "lib/net35/UnityEngine.UIElementsModule.dll",
+        "lib/net35/UnityEngine.UIElementsNativeModule.dll",
         "lib/net35/UnityEngine.UIModule.dll",
+        "lib/net35/UnityEngine.UNETModule.dll",
         "lib/net35/UnityEngine.UmbraModule.dll",
         "lib/net35/UnityEngine.UnityAnalyticsCommonModule.dll",
         "lib/net35/UnityEngine.UnityAnalyticsModule.dll",
@@ -887,7 +888,6 @@
         "lib/net45/UnityEngine.ClothModule.dll",
         "lib/net45/UnityEngine.ClusterInputModule.dll",
         "lib/net45/UnityEngine.ClusterRendererModule.dll",
-        "lib/net45/UnityEngine.ContentLoadModule.dll",
         "lib/net45/UnityEngine.CoreModule.dll",
         "lib/net45/UnityEngine.CrashReportingModule.dll",
         "lib/net45/UnityEngine.DSPGraphModule.dll",
@@ -907,7 +907,6 @@
         "lib/net45/UnityEngine.Physics2DModule.dll",
         "lib/net45/UnityEngine.PhysicsModule.dll",
         "lib/net45/UnityEngine.ProfilerModule.dll",
-        "lib/net45/UnityEngine.PropertiesModule.dll",
         "lib/net45/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll",
         "lib/net45/UnityEngine.ScreenCaptureModule.dll",
         "lib/net45/UnityEngine.SharedInternalsModule.dll",
@@ -924,7 +923,9 @@
         "lib/net45/UnityEngine.TextRenderingModule.dll",
         "lib/net45/UnityEngine.TilemapModule.dll",
         "lib/net45/UnityEngine.UIElementsModule.dll",
+        "lib/net45/UnityEngine.UIElementsNativeModule.dll",
         "lib/net45/UnityEngine.UIModule.dll",
+        "lib/net45/UnityEngine.UNETModule.dll",
         "lib/net45/UnityEngine.UmbraModule.dll",
         "lib/net45/UnityEngine.UnityAnalyticsCommonModule.dll",
         "lib/net45/UnityEngine.UnityAnalyticsModule.dll",
@@ -953,7 +954,6 @@
         "lib/netstandard2.0/UnityEngine.ClothModule.dll",
         "lib/netstandard2.0/UnityEngine.ClusterInputModule.dll",
         "lib/netstandard2.0/UnityEngine.ClusterRendererModule.dll",
-        "lib/netstandard2.0/UnityEngine.ContentLoadModule.dll",
         "lib/netstandard2.0/UnityEngine.CoreModule.dll",
         "lib/netstandard2.0/UnityEngine.CrashReportingModule.dll",
         "lib/netstandard2.0/UnityEngine.DSPGraphModule.dll",
@@ -973,7 +973,6 @@
         "lib/netstandard2.0/UnityEngine.Physics2DModule.dll",
         "lib/netstandard2.0/UnityEngine.PhysicsModule.dll",
         "lib/netstandard2.0/UnityEngine.ProfilerModule.dll",
-        "lib/netstandard2.0/UnityEngine.PropertiesModule.dll",
         "lib/netstandard2.0/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll",
         "lib/netstandard2.0/UnityEngine.ScreenCaptureModule.dll",
         "lib/netstandard2.0/UnityEngine.SharedInternalsModule.dll",
@@ -990,7 +989,9 @@
         "lib/netstandard2.0/UnityEngine.TextRenderingModule.dll",
         "lib/netstandard2.0/UnityEngine.TilemapModule.dll",
         "lib/netstandard2.0/UnityEngine.UIElementsModule.dll",
+        "lib/netstandard2.0/UnityEngine.UIElementsNativeModule.dll",
         "lib/netstandard2.0/UnityEngine.UIModule.dll",
+        "lib/netstandard2.0/UnityEngine.UNETModule.dll",
         "lib/netstandard2.0/UnityEngine.UmbraModule.dll",
         "lib/netstandard2.0/UnityEngine.UnityAnalyticsCommonModule.dll",
         "lib/netstandard2.0/UnityEngine.UnityAnalyticsModule.dll",
@@ -1010,7 +1011,7 @@
         "lib/netstandard2.0/UnityEngine.WindModule.dll",
         "lib/netstandard2.0/UnityEngine.XRModule.dll",
         "lib/netstandard2.0/UnityEngine.dll",
-        "unityengine.modules.2022.3.9.nupkg.sha512",
+        "unityengine.modules.2021.3.33.nupkg.sha512",
         "unityengine.modules.nuspec"
       ]
     }
@@ -1018,32 +1019,32 @@
   "projectFileDependencyGroups": {
     ".NETFramework,Version=v4.6": [
       "BepInEx.Analyzers >= 1.0.8",
-      "BepInEx.Core >= 5.*",
+      "BepInEx.Core >= 5.4.21",
       "BepInEx.PluginInfoProps >= 2.1.0",
       "MediaToolkit >= 1.1.0.1",
       "Microsoft.NETFramework.ReferenceAssemblies >= 1.0.2",
       "System.IO.Compression >= 4.3.0",
-      "UnityEngine.Modules >= 2022.3.9"
+      "UnityEngine.Modules >= 2021.3.33"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\uihuk\\.nuget\\packages\\": {},
-    "F:\\Visual Shared\\NuGetPackages": {}
+    "C:\\Users\\KoderTech\\.nuget\\packages\\": {},
+    "E:\\Visual Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\source\\repos\\BoomboxController\\BoomboxController\\BoomboxController.csproj",
+      "projectUniqueName": "E:\\source\\repos\\BoomboxController\\BoomboxController\\BoomboxController.csproj",
       "projectName": "BoomboxController",
-      "projectPath": "F:\\source\\repos\\BoomboxController\\BoomboxController\\BoomboxController.csproj",
-      "packagesPath": "C:\\Users\\uihuk\\.nuget\\packages\\",
-      "outputPath": "F:\\source\\repos\\BoomboxController\\BoomboxController\\obj\\",
+      "projectPath": "E:\\source\\repos\\BoomboxController\\BoomboxController\\BoomboxController.csproj",
+      "packagesPath": "C:\\Users\\KoderTech\\.nuget\\packages\\",
+      "outputPath": "E:\\source\\repos\\BoomboxController\\BoomboxController\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "F:\\Visual Shared\\NuGetPackages"
+        "E:\\Visual Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\uihuk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\KoderTech\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1053,8 +1054,7 @@
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://nuget.bepinex.dev/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net46": {
@@ -1066,6 +1066,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "all"
       }
     },
     "frameworks": {
@@ -1079,7 +1084,7 @@
           },
           "BepInEx.Core": {
             "target": "Package",
-            "version": "[5.*, )"
+            "version": "[5.4.21, )"
           },
           "BepInEx.PluginInfoProps": {
             "target": "Package",
@@ -1101,10 +1106,16 @@
           "UnityEngine.Modules": {
             "include": "Compile",
             "target": "Package",
-            "version": "[2022.3.9, )"
+            "version": "[2021.3.33, )"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.Net.Sdk.Compilers.Toolset",
+            "version": "[9.0.100, 9.0.100]"
+          }
+        ],
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

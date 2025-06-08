@@ -15,7 +15,7 @@ namespace BoomboxController
         public static AudioBoomBox bom;
         public static VisualBoombox vbom;
         public static BoomboxItem boomboxItem = new BoomboxItem();
-        public static AudioClip[] musicList;
+        public static Dictionary<string, AudioClip> musicList;
         public static QuitManager quit;
         public static QuitManager quits;
         public static KeyControl up = null;
@@ -51,6 +51,7 @@ namespace BoomboxController
         public static string LastnameOfUserWhoTyped;
         public static string NameTrack;
         public static string[] sumbols = { "+", "#", "�" };
+        public static string[] multi_name = { "SyncSong", };
         #endregion
     }
 }

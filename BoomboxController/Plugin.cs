@@ -17,7 +17,7 @@ namespace BoomboxController
 
         public static BoomboxController controller;
 
-        public const string Version = "1.2.3";
+        public const string Version = "1.2.7";
 
         private void Awake()
         {

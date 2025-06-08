@@ -49,7 +49,7 @@ namespace BoomboxController.Audio
                 }
                 if (track.Length != 0)
                 {
-                    musicList = bom.audioclipsplay.ToArray();
+                    musicList = bom.audioclipsplay.ToDictionary(x => x.Key, y => y.Value);
                     bom.audioclipsplay.Clear();
                 }
                 isplayList = false;
@@ -112,7 +112,7 @@ namespace BoomboxController.Audio
                 {
                     await bom.GetPlayList(@"file:///" + Paths.GameRootPath + @$"\BoomboxController\other\playlist\{file.Name}", boomboxItem, AudioType.MPEG);
                 }
-                musicList = bom.audioclipsplay.ToArray();
+                musicList = bom.audioclipsplay.ToDictionary(x => x.Key, y => y.Value);
                 bom.audioclipsplay.Clear();
                 LoadingMusicBoombox = false;
                 DrawString(__instance, Plugin.config.GetLang().main_8.Value, "Boombox YouTube", nameOfUserWhoTyped);

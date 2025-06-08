@@ -111,7 +111,9 @@ namespace BoomboxController.Commands
                                                 info.StartInfo.Arguments = $"-f bestaudio --extract-audio --ignore-config --audio-format mp3 --audio-quality 0 {vs[1]}";
                                                 info.StartInfo.WorkingDirectory = @$"BoomboxController\other";
                                                 info.StartInfo.CreateNoWindow = true;
+                                                info.StartInfo.RedirectStandardOutput = true;
                                                 info.Start();
+                                                string output = info.StandardOutput.ReadToEnd();
                                                 Id = info.Id;
                                                 while (!succeeded)
                                                 {
@@ -146,6 +148,10 @@ namespace BoomboxController.Commands
                                                         }
                                                     }
                                                     System.Threading.Thread.Sleep(1000);
+                                                }
+                                                using (StreamWriter sw = File.CreateText(@"BoomboxController\other\output.txt"))
+                                                {
+                                                    sw.WriteLine(output);
                                                 }
                                             });
                                             if (!File.Exists(@$"BoomboxController\other\{NameTrack}"))
@@ -222,7 +228,9 @@ namespace BoomboxController.Commands
                                                 info.StartInfo.Arguments = $"-f bestaudio --extract-audio --ignore-config --audio-format mp3 --audio-quality 0 {vs[1]}";
                                                 info.StartInfo.WorkingDirectory = @$"BoomboxController\other";
                                                 info.StartInfo.CreateNoWindow = true;
+                                                info.StartInfo.RedirectStandardOutput = true;
                                                 info.Start();
+                                                string output = info.StandardOutput.ReadToEnd();
                                                 Id = info.Id;
                                                 while (!succeeded)
                                                 {
@@ -257,6 +265,10 @@ namespace BoomboxController.Commands
                                                         }
                                                     }
                                                     System.Threading.Thread.Sleep(1000);
+                                                }
+                                                using (StreamWriter sw = File.CreateText(@"BoomboxController\other\output.txt"))
+                                                {
+                                                    sw.WriteLine(output);
                                                 }
                                             });
                                             if (!File.Exists(@$"BoomboxController\other\{NameTrack}"))
@@ -410,7 +422,9 @@ namespace BoomboxController.Commands
                                                 info.StartInfo.Arguments = $"-f bestaudio --extract-audio --ignore-config --audio-format mp3 --audio-quality 0 {vs[1]}";
                                                 info.StartInfo.WorkingDirectory = @$"BoomboxController\other";
                                                 info.StartInfo.CreateNoWindow = true;
+                                                info.StartInfo.RedirectStandardOutput = true;
                                                 info.Start();
+                                                string output = info.StandardOutput.ReadToEnd();
                                                 Id = info.Id;
                                                 while (!succeeded)
                                                 {
@@ -445,6 +459,10 @@ namespace BoomboxController.Commands
                                                         }
                                                     }
                                                     System.Threading.Thread.Sleep(1000);
+                                                }
+                                                using (StreamWriter sw = File.CreateText(@"BoomboxController\other\output.txt"))
+                                                {
+                                                    sw.WriteLine(output);
                                                 }
                                             });
                                             if (!File.Exists(@$"BoomboxController\other\{NameTrack}"))
@@ -515,10 +533,12 @@ namespace BoomboxController.Commands
                                                 Process info = new Process();
                                                 info.StartInfo.FileName = @"BoomboxController\other\yt-dlp.exe";
                                                 info.StartInfo.UseShellExecute = false;
-                                                info.StartInfo.Arguments = $"--ignore-config {vs[1]}";
+                                                info.StartInfo.Arguments = $"-f bestaudio --extract-audio --ignore-config --audio-format mp3 --audio-quality 0 {vs[1]}";
                                                 info.StartInfo.WorkingDirectory = @$"BoomboxController\other";
                                                 info.StartInfo.CreateNoWindow = true;
+                                                info.StartInfo.RedirectStandardOutput = true;
                                                 info.Start();
+                                                string output = info.StandardOutput.ReadToEnd();
                                                 Id = info.Id;
                                                 while (!succeeded)
                                                 {
@@ -544,6 +564,10 @@ namespace BoomboxController.Commands
                                                     }
                                                     System.Threading.Thread.Sleep(1000);
                                                 }
+                                                using (StreamWriter sw = File.CreateText(@"BoomboxController\other\output.txt"))
+                                                {
+                                                    sw.WriteLine(output);
+                                                }
                                             });
                                             if (!File.Exists(@$"BoomboxController\other\{NameTrack}"))
                                             {
@@ -551,10 +575,37 @@ namespace BoomboxController.Commands
                                                 isplayList = false;
                                                 break;
                                             }
-                                            currectTrack = 0;
-                                            boomboxItem.boomboxAudio.time = 0;
-                                            bom.Start(bom.GetAudioClip(@"file:///" + Paths.GameRootPath + @$"\BoomboxController\other\{NameTrack}", boomboxItem, AudioType.MPEG));
-                                            DrawString(__instance, Plugin.config.GetLang().main_8.Value, "Boombox SoundCloud", nameOfUserWhoTyped);
+                                            bool sumbBlock = false;
+                                            List<string> sumbol = new List<string>();
+                                            FileInfo ext = new FileInfo(@$"BoomboxController\other\{NameTrack}");
+                                            foreach (string sumb in sumbols)
+                                            {
+                                                if (ext.Name.Contains(sumb))
+                                                {
+                                                    sumbol.Add(sumb);
+                                                    sumbBlock = true;
+                                                }
+                                            }
+                                            if (sumbBlock)
+                                            {
+                                                string NameFile = String.Empty;
+                                                foreach (string sumb in sumbol)
+                                                {
+                                                    NameFile = NameTrack.Replace(sumb, "");
+                                                    ext.MoveTo(@$"BoomboxController\other\{NameTrack.Replace(sumb, "")}");
+                                                }
+                                                currectTrack = 0;
+                                                boomboxItem.boomboxAudio.time = 0;
+                                                bom.Start(bom.GetAudioClip(@"file:///" + Paths.GameRootPath + @$"\BoomboxController\other\{NameFile}", boomboxItem, AudioType.MPEG));
+                                                DrawString(__instance, Plugin.config.GetLang().main_8.Value, "Boombox SoundCloud", nameOfUserWhoTyped);
+                                            }
+                                            else
+                                            {
+                                                currectTrack = 0;
+                                                boomboxItem.boomboxAudio.time = 0;
+                                                bom.Start(bom.GetAudioClip(@"file:///" + Paths.GameRootPath + @$"\BoomboxController\other\{NameTrack}", boomboxItem, AudioType.MPEG));
+                                                DrawString(__instance, Plugin.config.GetLang().main_8.Value, "Boombox SoundCloud", nameOfUserWhoTyped);
+                                            }
                                         }
                                     }
                                     break;
@@ -724,7 +775,7 @@ namespace BoomboxController.Commands
                                 currectTrack = track;
                                 boomboxItem.boomboxAudio.Stop();
                                 timesPlayedWithoutTurningOff = 0;
-                                boomboxItem.boomboxAudio.clip = musicList[currectTrack];
+                                boomboxItem.boomboxAudio.clip = musicList.ToList()[currectTrack].Value;
                                 boomboxItem.boomboxAudio.pitch = 1f;
                                 boomboxItem.boomboxAudio.time = 0;
                                 boomboxItem.boomboxAudio.Play();
@@ -792,117 +843,15 @@ namespace BoomboxController.Commands
                             await AudioManager.LoadMusicLocal(__instance, nameOfUserWhoTyped);
                         }
                         break;
-                        //case "bmenu":
-                        //    if (!isplayList)
-                        //    {
-                        //        isplayList = true;
-                        //        CreateMenu();
-                        //    }
-                        //    break;
+                    //case "bmenu":
+                    //    if (!isplayList)
+                    //    {
+                    //        isplayList = true;
+                    //        CreateMenu();
+                    //    }
+                    //    break;
                 }
             }
-        }
-
-        [HarmonyPatch(typeof(HUDManager), "AddPlayerChatMessageServerRpc")]
-        [HarmonyPostfix]
-        [ServerRpc(RequireOwnership = false)]
-        private static void AddPlayerChatMessageServerRpc_HUDManager(HUDManager __instance, string chatMessage, int playerId)
-        {
-            if (chatMessage.Length > 50)
-            {
-                __instance.GetType().GetMethod("AddPlayerChatMessageClientRpc", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(__instance, new object[2] { chatMessage, playerId });
-            }
-        }
-
-        [HarmonyPatch(typeof(HUDManager), "AddPlayerChatMessageClientRpc")]
-        [HarmonyPostfix]
-        [ClientRpc]
-        private static void AddPlayerChatMessageClientRpc_HUDManager(HUDManager __instance, string chatMessage, int playerId)
-        {
-            if (Plugin.config.radiuscheck.Value)
-            {
-                if (IsCommand(chatMessage, new string[] { "bhelp", "bplay", "btime", "bvolume", "btrack" }))
-                {
-                    if (!(Vector3.Distance(GameNetworkManager.Instance.localPlayerController.transform.position, __instance.playersManager.allPlayerScripts[playerId].transform.position) < 25f))
-                    {
-                        __instance.GetType().GetMethod("AddChatMessage", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(__instance, new object[2] { chatMessage, __instance.playersManager.allPlayerScripts[playerId].playerUsername });
-                    }
-                }
-            }
-        }
-
-        [HarmonyPatch(typeof(HUDManager), "SubmitChat_performed")]
-        [HarmonyPrefix]
-        private static void SubmitChat_performed_HUDManager(HUDManager __instance, ref InputAction.CallbackContext context)
-        {
-            if (LoadingMusicBoombox)
-            {
-                if (IsCommand(__instance.chatTextField.text, new string[] { "bhelp", "bplay", "btime", "bvolume", "btrack" })) __instance.chatTextField.text = String.Empty;
-            }
-            else
-            {
-                if (!blockcompatibility)
-                {
-                    if (IsCommand(__instance.chatTextField.text, new string[] { "bhelp", "bplay", "btime", "bvolume", "btrack" }))
-                    {
-                        SubmitChat(__instance);
-                        return;
-                    }
-                }
-                if (!string.IsNullOrEmpty(__instance.chatTextField.text) && __instance.chatTextField.text.Length < 1000)
-                {
-                    __instance.AddTextToChatOnServer(__instance.chatTextField.text, (int)__instance.localPlayer.playerClientId);
-                }
-                for (int i = 0; i < StartOfRound.Instance.allPlayerScripts.Length; i++)
-                {
-                    if (StartOfRound.Instance.allPlayerScripts[i].isPlayerControlled && Vector3.Distance(GameNetworkManager.Instance.localPlayerController.transform.position, StartOfRound.Instance.allPlayerScripts[i].transform.position) > 24.4f && (!GameNetworkManager.Instance.localPlayerController.holdingWalkieTalkie || !StartOfRound.Instance.allPlayerScripts[i].holdingWalkieTalkie))
-                    {
-                        __instance.playerCouldRecieveTextChatAnimator.SetTrigger("ping");
-                        break;
-                    }
-                }
-            }
-        }
-
-        public static void SubmitChat(HUDManager __instance)
-        {
-            if (!string.IsNullOrEmpty(__instance.chatTextField.text) && __instance.chatTextField.text.Length < 1000)
-            {
-                __instance.AddTextToChatOnServer(__instance.chatTextField.text, (int)__instance.localPlayer.playerClientId);
-            }
-            for (int i = 0; i < StartOfRound.Instance.allPlayerScripts.Length; i++)
-            {
-                if (Plugin.config.radiuscheck.Value)
-                {
-                    if (StartOfRound.Instance.allPlayerScripts[i].isPlayerControlled && (!GameNetworkManager.Instance.localPlayerController.holdingWalkieTalkie || !StartOfRound.Instance.allPlayerScripts[i].holdingWalkieTalkie))
-                    {
-                        __instance.playerCouldRecieveTextChatAnimator.SetTrigger("ping");
-                        break;
-                    }
-                }
-                else
-                {
-                    if (StartOfRound.Instance.allPlayerScripts[i].isPlayerControlled && Vector3.Distance(GameNetworkManager.Instance.localPlayerController.transform.position, StartOfRound.Instance.allPlayerScripts[i].transform.position) > 24.4f && (!GameNetworkManager.Instance.localPlayerController.holdingWalkieTalkie || !StartOfRound.Instance.allPlayerScripts[i].holdingWalkieTalkie))
-                    {
-                        __instance.playerCouldRecieveTextChatAnimator.SetTrigger("ping");
-                        break;
-                    }
-                }
-            }
-            __instance.localPlayer.isTypingChat = false;
-            __instance.chatTextField.text = "";
-            EventSystem.current.SetSelectedGameObject(null);
-            __instance.PingHUDElement(__instance.Chat);
-            __instance.typingIndicator.enabled = false;
-        }
-
-        public static bool IsCommand(string text, string[] args)
-        {
-            foreach (string command in args)
-            {
-                if (text.Contains(command)) return true;
-            }
-            return false;
         }
     }
 }

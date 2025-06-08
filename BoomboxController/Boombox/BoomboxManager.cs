@@ -14,6 +14,7 @@ using UnityEngine.UIElements;
 using UnityEngine;
 using System.IO;
 using Cache = BoomboxController.Save.Cache;
+using System.Diagnostics;
 
 namespace BoomboxController.Boombox
 {
@@ -52,7 +53,6 @@ namespace BoomboxController.Boombox
                 }
             }
             __instance.boomboxAudio.volume = 0.5f;
-            __instance.itemProperties.weight = 0;
             __instance.musicAudios = null;
             __instance.itemProperties.requiresBattery = Plugin.config.requstbattery.Value;
             boomboxItem = __instance;
@@ -75,31 +75,32 @@ namespace BoomboxController.Boombox
         [HarmonyPrefix]
         private static bool StartMusic_BoomboxItem(BoomboxItem __instance, bool startMusic, bool pitchDown, ref int ___timesPlayedWithoutTurningOff)
         {
-            if (!LoadingMusicBoombox)
+            if(musicList != null)
             {
-                Plugin.instance.Log(startMusic + " startmusic");
-                if (startMusic)
+                if (!LoadingMusicBoombox)
                 {
-                    if (!currentTrackChange)
+                    Plugin.instance.Log(startMusic + " startmusic");
+                    if (startMusic)
                     {
-                        currectTrack = UnityEngine.Random.Range(0, totalTack - 1);
+                        if (!currentTrackChange)
+                        {
+                            currectTrack = UnityEngine.Random.Range(0, totalTack - 1);
+                        }
+                        if (__instance.IsOwner)
+                        {
+                            HUDManager.Instance.AddTextToChatOnServer($"[{currectTrack}]SyncSong", (int)HUDManager.Instance.localPlayer.playerClientId);
+                        }
                     }
-                    boomboxItem.boomboxAudio.clip = musicList[currectTrack];
-                    boomboxItem.boomboxAudio.pitch = 1f;
-                    boomboxItem.boomboxAudio.Play();
-                    boomboxItem.isPlayingMusic = startMusic;
-                    boomboxItem.isBeingUsed = startMusic;
-                    startMusics = false;
-                }
-                else if (boomboxItem.isPlayingMusic)
-                {
-                    boomboxItem.boomboxAudio.Stop();
-                    boomboxItem.boomboxAudio.PlayOneShot(boomboxItem.stopAudios[UnityEngine.Random.Range(0, boomboxItem.stopAudios.Length)]);
-                    timesPlayedWithoutTurningOff = 0;
-                    boomboxItem.isPlayingMusic = startMusic;
-                    boomboxItem.isBeingUsed = startMusic;
-                    startMusics = true;
-                    currentTrackChange = false;
+                    else if (boomboxItem.isPlayingMusic)
+                    {
+                        boomboxItem.boomboxAudio.Stop();
+                        boomboxItem.boomboxAudio.PlayOneShot(boomboxItem.stopAudios[UnityEngine.Random.Range(0, boomboxItem.stopAudios.Length)]);
+                        timesPlayedWithoutTurningOff = 0;
+                        boomboxItem.isPlayingMusic = startMusic;
+                        boomboxItem.isBeingUsed = startMusic;
+                        startMusics = true;
+                        currentTrackChange = false;
+                    }
                 }
             }
             //else
@@ -122,7 +123,7 @@ namespace BoomboxController.Boombox
             timesPlayedWithoutTurningOff = ___timesPlayedWithoutTurningOff;
             if (musicList != null)
             {
-                totalTack = musicList.Length;
+                totalTack = musicList.Count;
             }
             if (boomboxItem.isPlayingMusic)
             {
@@ -154,7 +155,7 @@ namespace BoomboxController.Boombox
                             boomboxItem.boomboxAudio.Stop();
                             currectTrack = 0;
                             boomboxItem.boomboxAudio.time = 0;
-                            boomboxItem.boomboxAudio.clip = musicList[currectTrack];
+                            boomboxItem.boomboxAudio.clip = musicList.ToList()[currectTrack].Value;
                             boomboxItem.boomboxAudio.Play();
                         }
                     }
@@ -168,7 +169,7 @@ namespace BoomboxController.Boombox
                     {
                         currectTrack = currectTrack + 1;
                         Plugin.instance.Log($"Position track: {currectTrack}");
-                        boomboxItem.boomboxAudio.clip = musicList[currectTrack];
+                        boomboxItem.boomboxAudio.clip = musicList.ToList()[currectTrack].Value;
                         boomboxItem.boomboxAudio.time = 0;
                         boomboxItem.isPlayingMusic = true;
                         waitAutoNext = false;
